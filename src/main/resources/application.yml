@@ -1,0 +1,15 @@
+info:
+  application:
+    name: Springit
+    description: Reddit Clone
+    version: 1.0.0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show_details: always
+server:
+  port: 8081
