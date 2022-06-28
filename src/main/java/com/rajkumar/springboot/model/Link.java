@@ -1,8 +1,6 @@
 package com.rajkumar.springboot.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +13,8 @@ import java.util.Objects;
 @Entity
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+@RequiredArgsConstructor
 public class Link extends Auditable {
 
     @Id
@@ -27,5 +27,9 @@ public class Link extends Auditable {
 
     @OneToMany(mappedBy = "link")
     private List<Comment> commentsList = new ArrayList<>();
+
+    public void addComment(Comment comment) {
+        commentsList.add(comment);
+    }
 
 }
