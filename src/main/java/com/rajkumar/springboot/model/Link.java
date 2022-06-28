@@ -1,14 +1,18 @@
 package com.rajkumar.springboot.model;
 
-import lombok.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
@@ -16,7 +20,7 @@ import java.util.Objects;
 @EqualsAndHashCode(callSuper = false)
 @RequiredArgsConstructor
 public class Link extends Auditable {
-
+    
     @Id
     @GeneratedValue
     private Long id;
@@ -24,12 +28,12 @@ public class Link extends Auditable {
     private String title;
     @NonNull
     private String url;
-
+    
     @OneToMany(mappedBy = "link")
     private List<Comment> commentsList = new ArrayList<>();
-
-    public void addComment(Comment comment) {
-        commentsList.add(comment);
+    
+    public void addComment(final Comment comment) {
+        this.commentsList.add(comment);
     }
-
+    
 }
